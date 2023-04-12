@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade --force-reinstall "botocore>1.21.30" "boto3>1.18.30" "awscli>1.20.30" "sagemaker==2.141.0"      
+  build:
+    commands:
+      # Call the test python code
+      - python test/test.py --import-build-config $CODEBUILD_SRC_DIR_BuildArtifact/staging-config-export.json --export-test-results $EXPORT_TEST_RESULTS
+      # Show the test results file
+      - cat $EXPORT_TEST_RESULTS
+
+artifacts:
+  files:
+    - $EXPORT_TEST_RESULTS
