@@ -20,9 +20,6 @@ The template provides a starting point for bringing your SageMaker Pipeline deve
 |-- sagemaker-pipelines-project.ipynb
 |-- setup.cfg
 |-- setup.py
-|-- tests
-|   `-- test_pipelines.py
-`-- tox.ini
 ```
 
 ## Start here
@@ -70,17 +67,6 @@ Python package artifacts:
 ```
 |-- setup.cfg
 |-- setup.py
-```
-<br/><br/>
-A stubbed testing module for testing your pipeline as you develop:
-```
-|-- tests
-|   `-- test_pipelines.py
-```
-<br/><br/>
-The `tox` testing framework configuration:
-```
-`-- tox.ini
 ```
 
 ## Dataset for the Example Autopilot Pipeline

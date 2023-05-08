@@ -245,9 +245,6 @@ def get_pipeline(
         {
             output_name[1]: {
                 "content_type": output_content_type,
-                # "delimiter": delimiter,
-                # "compression": compression,
-                # "partition_config": partition_config,
             }
         }
         for output_name in output_names

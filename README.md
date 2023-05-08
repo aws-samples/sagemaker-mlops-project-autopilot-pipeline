@@ -45,7 +45,3 @@ Here are the steps involved in the workflow of this Architecture:
 
     * [Project Folder](project) having the CFN template using by the Service Catalog mapped to the Custom SageMaker project template that will be created.
 
-
-## Instructions
-    
-### To be updated
