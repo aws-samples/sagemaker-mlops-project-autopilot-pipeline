@@ -5,13 +5,13 @@ Description: >-
 Parameters:
   ProductNameParameter:
     Type: String
-    Default: MLOps with Autopilot SageMaker Project Example
+    Default: mlops-autopilot-custom-template
     Description: The name of this product within the portfolio.
   ProductDescriptionParameter:
     Type: String
     Default: >-
-      The MLOps template in this repo can be used to setup a SageMaker Project
-      for model training and deployment using SageMaker Autopilot.
+      Custom SageMaker Project MLOps template to automate data preparation,
+      model training and deployment using SageMaker DataWrangler and Autopilot.
     Description: The description of this product within the portfolio.
   ProductOwnerParameter:
     Type: String
@@ -31,16 +31,16 @@ Parameters:
     Description: The support email of this product within the portfolio.
   ProductSupportURLParameter:
     Type: String
-    Default: 'https://github.com/aws-samples/sagemaker-custom-project-templates'
+    Default: 'https://github.com/aws-samples/sagemaker-mlops-project-autopilot-pipeline'
     Description: The support url of this product within the portfolio.
   SageMakerProjectRepoZipParameter:
     Type: String
     Default: >-
-      https://github.com/vishal49naik49/sm-mlops-autopilot/archive/refs/heads/main.zip
+      https://github.com/aws-samples/sagemaker-mlops-project-autopilot-pipeline/archive/refs/heads/main.zip
     Description: URL for a Zip of the SageMaker Project Autopilot Example GitHub Repo
   SageMakerProjectRepoNameBranchParameter:
     Type: String
-    Default: sm-mlops-autopilot-main
+    Default: sagemaker-mlops-project-autopilot-pipeline-main
     Description: Name/Branch of the SageMaker Projects Examples GitHub Repo
   StudioUserExecutionRole:
     Type: String
@@ -407,7 +407,28 @@ Resources:
                   - 'arn:aws:s3:::sagemaker-*'
               - Effect: Allow
                 Action:
-                  - 'sagemaker:*'
+                  - 'sagemaker:CreateEndpoint'
+                  - 'sagemaker:CreateEndpointConfig'
+                  - 'sagemaker:CreateModel'
+                  - 'sagemaker:CreateWorkteam'
+                  - 'sagemaker:DeleteEndpoint'
+                  - 'sagemaker:DeleteEndpointConfig'
+                  - 'sagemaker:DeleteModel'
+                  - 'sagemaker:DeleteWorkteam'
+                  - 'sagemaker:DescribeModel'
+                  - 'sagemaker:DescribeEndpointConfig'
+                  - 'sagemaker:DescribeEndpoint'
+                  - 'sagemaker:DescribeWorkteam'
+                  - 'sagemaker:CreateCodeRepository'
+                  - 'sagemaker:DescribeCodeRepository'
+                  - 'sagemaker:UpdateCodeRepository'
+                  - 'sagemaker:DeleteCodeRepository'  
+                  - 'sagemaker:CreateImage'
+                  - 'sagemaker:DeleteImage'
+                  - 'sagemaker:DescribeImage'
+                  - 'sagemaker:UpdateImage'
+                  - 'sagemaker:ListTags'
+                  - 'sagemaker:AddTags'                                              
                 NotResource:
                   - 'arn:aws:sagemaker:*:*:domain/*'
                   - 'arn:aws:sagemaker:*:*:user-profile/*'
