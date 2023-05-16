@@ -20,6 +20,7 @@ Resources:
   MlOpsArtifactsBucket:
     Type: 'AWS::S3::Bucket'
     DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
     Properties:
       BucketName: !Sub 'sagemaker-project-${SageMakerProjectId}'
   ModelBuildCodeCommitEventRule:
@@ -125,7 +126,6 @@ Resources:
       TimeoutInMinutes: 480
   ModelBuildPipeline:
     Type: 'AWS::CodePipeline::Pipeline'
-    DependsOn: MlOpsArtifactsBucket
     Properties:
       Name: !Sub 'sagemaker-${SageMakerProjectName}-${SageMakerProjectId}-modelbuild'
       RoleArn: !Join 
@@ -345,7 +345,6 @@ Resources:
       TimeoutInMinutes: 30
   ModelDeployPipeline:
     Type: 'AWS::CodePipeline::Pipeline'
-    DependsOn: MlOpsArtifactsBucket
     Properties:
       Name: !Sub 'sagemaker-${SageMakerProjectName}-${SageMakerProjectId}-modeldeploy'
       RoleArn: !Join 

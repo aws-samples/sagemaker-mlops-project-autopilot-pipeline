@@ -1,11 +1,17 @@
 import os
 import setuptools
 
+from pipelines.__version__ import (
+    __title__,
+    __description__,
+    __version__,
+    __author__,
+    __author_email__,
+    __license__,
+    __url__,
+)
 
-about = {}
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, "pipelines", "__version__.py")) as f:
-    about = f.read()
 
 
 with open("README.md", "r") as f:
@@ -24,19 +30,19 @@ extras = {
         "pytest-cov",
         "sagemaker",
         "tox",
-        "scikit-learn",        
+        "scikit-learn",
     ]
 }
 setuptools.setup(
-    name=about["__title__"],
-    description=about["__description__"],
-    version=about["__version__"],
-    author=about["__author__"],
-    author_email=["__author_email__"],
+    name=__title__,
+    description=__description__,
+    version=__version__,
+    author=__author__,
+    author_email=__author_email__,
     long_description=readme,
     long_description_content_type="text/markdown",
-    url=about["__url__"],
-    license=about["__license__"],
+    url=__url__,
+    license=__license__,
     packages=setuptools.find_packages(),
     include_package_data=True,
     python_requires=">=3.6",
