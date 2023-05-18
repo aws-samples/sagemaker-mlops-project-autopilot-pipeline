@@ -23,6 +23,12 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       BucketName: !Sub 'sagemaker-project-${SageMakerProjectId}'
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled              
   ModelBuildCodeCommitEventRule:
     Type: 'AWS::Events::Rule'
     Properties:

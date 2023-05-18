@@ -114,6 +114,8 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
+      VersioningConfiguration:
+        Status: Enabled               
   BootstrapS3BucketPolicy:
     Type: 'AWS::S3::BucketPolicy'
     Properties:
@@ -247,6 +249,12 @@ Resources:
                       - BootstrapS3Bucket
                       - Arn
                     - /*
+              - Effect: Allow
+                Action:
+                  - 's3:PutEncryptionConfiguration'
+                  - 's3:PutBucketVersioning'
+                Resource:
+                  - 'arn:aws:s3:::sagemaker-*'                    
               - Effect: Allow
                 Action:
                   - 'iam:PassRole'
@@ -392,6 +400,7 @@ Resources:
                   - 's3:ListBucket'
                   - 's3:ListBucketMultipartUploads'
                   - 's3:PutBucketCors'
+                  - 's3:PutBucketVersioning'
                 Resource:
                   - 'arn:aws:s3:::aws-glue-*'
                   - 'arn:aws:s3:::sagemaker-*'
